@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <script src="https://js.stripe.com/v3/"></script>  <!-- Stripe.js -->
+</head>
+<body>
+
+  <!-- HEADER and SIDEBAR -->
+  <header>
+    <div class="logo" id="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <h3>HK & GOZZA Server Building</h3>
+    <label for="burger-toggle" class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <nav id="topnav">
+      <ul>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="about.html">About us</a></li>
+        <li><a href="pricing.html">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <h1 style="color: rgb(230, 255, 189);">OUR PRODUCTS AND PRICES</h1>
+    
+    <!-- Product Card: Basic Build -->
+    <section class="product-card" data-gradient="0">
+      <h2>Basic Build</h2>
+      <div class="product-details">
+        <p>Includes:</p>
+        <ul>
+          <li>• Roles</li>
+          <li>• Categories & channels</li>
+          <li>• Permissions setup</li>
+          <li>• Server icon help (optional)</li>
+        </ul>
+        <p>Pay with:</p>
+        <ul>
+          <li>£3 / $4</li>
+          <li>1x Nitro Classic</li>
+          <li>Custom emoji/art</li>
+        </ul>
+        <button class="stripe-btn" data-price="4" data-currency="usd">Buy Now</button>
+      </div>
+    </section>
+
+    <!-- Product Card: Enhanced Build -->
+    <section class="product-card" data-gradient="0.25">
+      <h2>Enhanced Build</h2>
+      <div class="product-details">
+        <p>Includes:</p>
+        <ul>
+          <li>• Everything in Basic</li>
+          <li>• Bots (suggested + setup)</li>
+          <li>• Aesthetic layout</li>
+          <li>• Custom emojis</li>
+          <li>• Basic moderation setup</li>
+        </ul>
+        <p>Pay with:</p>
+        <ul>
+          <li>£6 / $8</li>
+          <li>1x Nitro Boost</li>
+          <li>Custom PFP or server icon</li>
+        </ul>
+        <button class="stripe-btn" data-price="8" data-currency="usd">Buy Now</button>
+      </div>
+    </section>
+
+    <!-- More products can go here -->
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 HK & GOZZA Server Building. All rights reserved
+  </footer>
+
+  <!-- Stripe JS logic -->
+  <script>
+    // Make sure to replace this with your actual public Stripe key
+    const stripe = Stripe('your-public-key');  // Replace with your actual Stripe public key
+
+    // Handle button clicks to create Stripe Checkout session
+    document.querySelectorAll('.stripe-btn').forEach(button => {
+      button.addEventListener('click', async (event) => {
+        const price = button.getAttribute('data-price');
+        const currency = button.getAttribute('data-currency');
+
+        // Open Stripe Checkout with the price and currency dynamically
+        const checkoutSession = await createCheckoutSession(price, currency);
+        
+        // Redirect to Stripe Checkout
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: checkoutSession.id,
+        });
+
+        if (error) {
+          console.error("Error:", error);
+        }
+      });
+    });
+
+    // Simulate creating a Checkout session by calling your backend (or Stripe's API)
+    async function createCheckoutSession(price, currency) {
+  // This URL would be your pre-created checkout session URL.
+  const checkoutUrl = 'https://checkout.stripe.com/pay/cs_test_abc123'; // Example URL
+
+  return { id: checkoutUrl };  // Return the URL directly
+}
+
+
+  </script>
+
+</body>
+</html>
