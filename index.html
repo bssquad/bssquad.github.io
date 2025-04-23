@@ -1,12 +1,58 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Górol Burger Web</title>
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
-    <h1>this page is a work in progress</h1>
+
+  <!-- Burger toggle (ukryty checkbox) -->
+  <input type="checkbox" id="burger-toggle" hidden />
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo" id="logo">
+      <img src="logo.png" alt="Logo">
+    </div>
+    <label for="burger-toggle" class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+    <nav id="topnav">
+      <ul>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav id="sidebar">
+    <ul>
+      <li><a href="index.html">Main</a></li>
+      <li><a href="#">About us</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <h1>Welcome!</h1>
+    <p>placeholder!</p>
     <br>
-    <a href="https://discord.gg/fPyMGzFBjX">clan discord</a>
+    <a style="color:wheat" href="https://discord.gg/QeWZh3Pm">our discord</a>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 GórolWeb. Wsyskie prawa zastrzeżone.
+  </footer>
+
 </body>
 </html>
